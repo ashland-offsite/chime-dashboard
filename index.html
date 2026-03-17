@@ -276,8 +276,8 @@ body {
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-transform: none;
   color: rgba(255,255,255,0.7);
   background: var(--green-600);
   padding: 12px 14px;
@@ -728,7 +728,13 @@ body {
   </span>
 </th>
         <th>Topics cited in</th>
-        <th style="min-width:200px">Highest topic citation share</th>
+        <th style="min-width:200px">
+  <span style="position:relative;display:inline-flex;align-items:center;gap:5px;cursor:default;" class="tooltip-anchor">
+    Highest topic citation share
+    <span style="width:14px;height:14px;border-radius:50%;background:var(--stroke-green);color:var(--text-secondary);font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">?</span>
+    <span class="tooltip-box">The topic where this URL has its strongest presence. Calculated as the URL's citations within that topic ÷ total citations for that topic. Shows where each placement punches hardest relative to the competition.</span>
+  </span>
+</th>
         <th>Format</th>
       </tr>
     </thead>
