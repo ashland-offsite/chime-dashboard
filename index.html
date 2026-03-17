@@ -600,6 +600,30 @@ body {
   .hero { padding: 40px; }
   .section { padding: 32px 40px; }
 }
+
+.tooltip-anchor { position: relative; }
+.tooltip-box {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--hero-bg);
+  color: rgba(255,255,255,0.85);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 6px;
+  width: 240px;
+  text-align: left;
+  white-space: normal;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.tooltip-anchor:hover .tooltip-box { display: block; }
 </style>
 </head>
 <body>
@@ -696,7 +720,13 @@ body {
         <th>#</th>
         <th>URL</th>
         <th>Citations</th>
-        <th style="min-width:180px">% of account citations</th>
+        <th style="min-width:180px">
+  <span style="position:relative;display:inline-flex;align-items:center;gap:5px;cursor:default;" class="tooltip-anchor">
+    Share of PR-driven citations
+    <span style="width:14px;height:14px;border-radius:50%;background:var(--stroke-green);color:var(--text-secondary);font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">?</span>
+    <span class="tooltip-box">Each URL's citations as a % of total PR-driven citations (8,583). Shows how much each placement contributes to Chime's overall PR citation footprint.</span>
+  </span>
+</th>
         <th>Topics cited in</th>
         <th style="min-width:200px">Highest topic citation share</th>
         <th>Format</th>
