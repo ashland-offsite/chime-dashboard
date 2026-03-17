@@ -754,6 +754,23 @@ body {
     align-items: flex-start;
     padding: 24px 20px;
   }
+
+  /* URL cells: truncate on mobile, tap to reveal */
+  .url-cell {
+    max-width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    position: relative;
+  }
+  .url-cell.url-expanded {
+    white-space: normal;
+    overflow: visible;
+    word-break: break-all;
+    max-width: 140px;
+    background: var(--green-200) !important;
+  }
 }
 </style>
 </head>
@@ -1372,5 +1389,30 @@ body {
 </div>
 
 </div>
+
+<!-- URL tap-to-expand on mobile -->
+<script>
+(function() {
+  if (window.innerWidth > 768) return;
+  var cells = document.querySelectorAll('.url-cell');
+  cells.forEach(function(cell) {
+    var full = cell.textContent.trim();
+    cell.setAttribute('title', full);
+    cell.addEventListener('click', function(e) {
+      // Close any other open cells
+      cells.forEach(function(c) {
+        if (c !== cell) c.classList.remove('url-expanded');
+      });
+      cell.classList.toggle('url-expanded');
+      e.stopPropagation();
+    });
+  });
+  // Tap elsewhere to collapse
+  document.addEventListener('click', function() {
+    cells.forEach(function(c) { c.classList.remove('url-expanded'); });
+  });
+})();
+</script>
+
 </body>
 </html>
